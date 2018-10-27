@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="/scripts/idxScrpt.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/idxStyle.css">
+    <title>NTL Message Room Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="jumbotron text-center">Welcome to our Messsaging System</h1>
+        <div class="list-group"> <a class="list-group-item list-group-item-action h3" href="/" data-target="#midReg" data-toggle="modal">Register</a> <a class="list-group-item list-group-item-action h3" href="/login">Log In</a> </div>
+        <div class="modal" tabindex="-1" id="midReg">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Register</h5>
+                        <button type="button" class="close" data-dismiss="modal"> <span>&times;</span> </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/login" method="post">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="usrnm">User Name</label>
+                                    <input type="text" autocomplete="off" pattern="^[a-zA-Z]{3,}$" class="form-control" required value="" id="usrnm" name="usrnm" placeholder="User Name">
+                                    <div class="invalid"> The required user name may only be a series of 3 alphabetical characters or more. </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="usrmail">Email</label>
+                                    <input type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" autocomplete="off" class="form-control" required value="" id="usrmail" name="usrmail" placeholder="Email">
+                                    <div class="invalid"> The required email address may not include any special characters other than the '@' sign. </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="usrpswd">Password</label>
+                                    <input type="password" class="form-control" required value="" name="usrpswd" id="usrpswd" placeholder="Password"> </div>
+                                <div class="form-group col-md-6">
+                                    <label for="pswdconfirm">Password Confirm</label>
+                                    <input type="password" class="form-control" name="pswdconfirm" id="pswdconfirm" required value="" placeholder="Password Confirm">
+                                    <div class="invalid " id="pwdvald"> missmatched password. </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div id="spex" class="justify-content-center align-self-center text-center">usr already exist kindly log in </div>
+                                <div id="spinvald" class="alert  alert-dismissible alert-danger fade in show"> invalid user data <span class="close" data-dismiss="alert">&times;</span> </div>
+                                <div id="spvald" class="alert  alert-dismissible alert-success fade in show"> validating user data successfully checked <span class="close" data-dismiss="alert">&times;</span> </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="text-center align-content-center">
+                            <button type="button" class="btn btn-success" id="submit">Register</button>
+                            <button type="button" class="btn btn-danger" id="rstForm">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

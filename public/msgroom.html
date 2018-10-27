@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+        <title>NTL Message Room</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/msgscrpt.js"></script>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="text-center">Message Room</h2>
+            <div class="text-right float-right">
+                <button class="btn btn-danger d-block text-right" id="btnLO">Log out</button>
+            </div>
+        </div>
+        <div id="d1"></div>
+        <div class="row">
+            <div id="d2" class="col-9">
+            </div>
+
+
+        </div>
+        <div class="row input-group">
+            <div class="col-9">
+                <textarea cols="80" rows="3" name="chat" size="50" id="txt" class="form-control"></textarea>
+            </div>
+            <div class="col-3"><button class="btn btn-primary btn-lg" id="sndmsg">send message</button></div>
+        </div>
+        <div class="row">
+            <div class="text-right float-right col-3 offset-2">
+                <button id="getHist" class="btn btn-outline-primary">Previous Messages</button>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

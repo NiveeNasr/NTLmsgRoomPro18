@@ -1,0 +1,27 @@
+#spvald {
+    visibility: hidden;
+}
+
+input:not([type='password']):valid+.invalid {
+    visibility: hidden;
+}
+
+input:not([type='password']):invalid+.invalid {
+    visibility: visible;
+}
+
+input:required {
+    border: 2px solid #910;
+}
+
+input:valid {
+    border: 2px solid #ccc;
+}
+
+.invalid {
+    position: relative;
+    display: block;
+    font-size: 0.7em;
+    color: #666;
+    margin-bottom: 6px;
+}

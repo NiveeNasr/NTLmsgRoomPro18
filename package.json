@@ -1,0 +1,23 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ntlpro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ntlpro.js"
+  },
+  "keywords": [
+    "ntl",
+    "nodejs",
+    "messagesystem"
+  ],
+  "author": "niveenasr",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "express": "^4.16.4",
+    "socket.io": "^2.1.1"
+  }
+}

@@ -1,0 +1,13 @@
+#d2 {
+    border: 1px solid gray;
+    width: 75%;
+    height: 180px;
+    overflow: scroll;
+    margin-bottom: 20px;
+    background-color: beige;
+}
+
+textarea {
+    display: inline;
+    border: 1px solid gray !important;
+}
