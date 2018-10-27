@@ -7,7 +7,7 @@ var bodyparser = require("body-parser");
 var cookieParser = require('cookie-parser');
 ////////////
 var http = require("http").createServer(app);
-var serverio = require("socket.io")(http);
+var serverio = require("socket.io").listen(http);
 /////////////////////
 //bodyparser middleware
 app.use(bodyparser.urlencoded({
