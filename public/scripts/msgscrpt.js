@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let socket = io("http://localhost:5813");
+    let socket = io();
     document.getElementById("btnLO").addEventListener("click", function () {
         location.replace("/logout");
     });
