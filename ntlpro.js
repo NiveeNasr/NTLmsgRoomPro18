@@ -1,16 +1,13 @@
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
-const app = express();
-const c = require("./cryptMod");
-const bodyparser = require("body-parser");
-const cookieParser = require('cookie-parser');
+var express = require("express");
+var path = require("path");
+var fs = require("fs");
+var app = express();
+var c = require("./cryptMod");
+var bodyparser = require("body-parser");
+var cookieParser = require('cookie-parser');
 ////////////
-const http = require("https").createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
-  },app);
-  const serverio = require("socket.io")(http);
+var http = require("http").createServer(app);
+var serverio = require("socket.io")(http);
 /////////////////////
 //bodyparser middleware
 app.use(bodyparser.urlencoded({
