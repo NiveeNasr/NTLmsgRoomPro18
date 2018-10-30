@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
     socket.on("all", (data) => {
         let msgDiv = document.getElementById("d2");
-        msgDiv.innerHTML += "message from " + data.usr.bold().fontcolor('red') + " : " + data.msg + "<br/>";
+        msgDiv.innerHTML += "message from " + data.usr.bold().fontcolor('red') + " : " + (data.msg) + "<br/>";
         if (msgDiv.scrollTop + msgDiv.clientHeight < msgDiv.scrollHeight) {
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
@@ -14,7 +14,7 @@ $(document).ready(function () {
         let usr = document.cookie;
         let nm = usr.split("=")[0];
         let val = usr.split("=")[1];
-        let msg = document.getElementById("txt").value;
+        let msg = (document.getElementById("txt").value);
         $("#txt").val("");
         socket.emit("message", {
             [nm]: val, msg: msg
@@ -25,10 +25,11 @@ $(document).ready(function () {
         socket.emit("historyReq", "");
         socket.on("historyRes", (data) => {
             for (let i in data) {
-                msg += "Message from " + (Object.values(JSON.parse(data[i]))[0]).bold().fontcolor('red') + " : " + Object.values(JSON.parse(data[i]))[1] + "<br/>";
+                msg += "Message from " + (Object.values(JSON.parse(data[i]))[0]).bold().fontcolor('red') + " : " + (Object.values(JSON.parse(data[i]))[1]) + "<br/>";
             }
-            $("#d2").prepend("<hr>");
-            $("#d2").prepend(msg);
+            $("#d2").html(msg);
+            $("#d2").append("<hr>");
+            
         });
     });
 });

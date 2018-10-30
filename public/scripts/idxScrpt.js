@@ -20,7 +20,7 @@ $(document).ready(function () {
         let valobj = {};
         e.preventDefault();
         valobj.usrmail = document.forms[0].elements.usrmail.value;
-        if ((/^[a-zA-Z]{3,}$/.test(usrnm)) && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(valobj.usrmail)) && (pswd === confpswd)) {
+        if ((/^[a-zA-Z]{3,}$/.test(usrnm)) && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(valobj.usrmail)) && (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}).+$/.test(pswd))&& (pswd === confpswd)) {
             validFlag = 1;
             $("#spvald").css("display", "block");
             $("#spinvald").css("display", "none");
