@@ -1,13 +1,17 @@
-var express = require("express");
-var path = require("path");
-var fs = require("fs");
-var app = express();
-var c = require("./cryptMod");
-var bodyparser = require("body-parser");
-var cookieParser = require('cookie-parser');
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const app = express();
+const c = require("./cryptMod");
+const bodyparser = require("body-parser");
+const cookieParser = require('cookie-parser');
 ////////////
-var http = require("http").createServer(app);
-var serverio = require("socket.io")(http);
+const http = require("http").createServer(app);
+const serverio = require("socket.io").listen(http);
+const helmet = require('helmet');
+
+const xss = require("xss");
+
 /////////////////////
 //bodyparser middleware
 app.use(bodyparser.urlencoded({
@@ -16,15 +20,23 @@ app.use(bodyparser.urlencoded({
 
 app.use(bodyparser.json());
 
+app.use(helmet.xssFilter())
+app.use(function(req, res, next) {
+    console.log('X-XSS-Protection')
+    res.setHeader("X-XSS-Protection"," 1; mode=block");
+    next()
+  })
+
 //cookie middleware
 app.use(cookieParser());
+
 /////////////
 serverio.on("connection", function (client) {
     console.log("client connected");
    
     client.on("message", function (data) {
         
-        let msg = data[Object.keys(data)[(Object.keys(data).length) - 1]];
+        let msg = xss(data[Object.keys(data)[(Object.keys(data).length) - 1]]);
 
         let cookief = client.handshake.headers.cookie;
         let cnmidx = cookief.indexOf(c.encrypt("usrname"));
@@ -100,9 +112,11 @@ app.get("/users", function (req, res) {
         for (let i in dataUsr) {
 
             let o = JSON.parse(c.decrypt(dataUsr[i]));
-            o.usrpswd = "***";
-            o["pswdconfirm"] = "***";
+            
+           delete o.usrpswd;
+           delete o.pswdconfirm;
             usr.push(o);
+            
         }
         res.send(JSON.stringify(usr).split("},{").join("},<br/>{"));
 
