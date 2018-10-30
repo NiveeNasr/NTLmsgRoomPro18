@@ -5,11 +5,11 @@
     display: none;
 }
 
-input:not([type='password']):valid + .invalid {
+input:not([id='pswdconfirm']):valid + .invalid {
     visibility: hidden;
 }
 
-input:not([type='password']):invalid + .invalid {
+input:not([id='pswdconfirm']):invalid + .invalid {
     visibility: visible;
 }
 
